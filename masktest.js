@@ -4,14 +4,17 @@ var basePackageUri = px.getPackageBaseFilePath();
 
 var url;
 
-var txt1 = scene.create({t:"text",x:10,text:"",parent:root,pixelSize:24});
+var txt1 = scene.create({t:"text",r:-85, x:140,text:"------------------ THIS IS A TRANSPARENCY TEST -------------",parent:root,pixelSize:24});
 
-var container = scene.create({t:"rect",parent:root,fillColor:0x00000000});
 var scaleFactor = 0.2
 
 urlLogo = basePackageUri + "/images/Peach_Rinkysplash.jpg";
 url = basePackageUri + "/images/rounded_map.png";
+
+var container = scene.create({t:"rect", fillColor:0x00000000, parent:root});
+
 // ball will draw since draw:true, but will also be used as mask for childText
+
 var ball = scene.create({t:"image",url:url,parent:container,sx:scaleFactor,sy:scaleFactor,clip:true,mask:true,draw:true});
   ball.ready.then(function() {
     container.w=ball.resource.w*scaleFactor;
@@ -20,7 +23,7 @@ var ball = scene.create({t:"image",url:url,parent:container,sx:scaleFactor,sy:sc
     container.cy = ball.resource.h*scaleFactor;
     fancy(container);
 
-    var childText = scene.create({t:"image", url:urlLogo, sx:scaleFactor, sy:scaleFactor, parent:container,textColor:0x800080ff,pixelSize:65});
+    var childText = scene.create({t:"image", url:urlLogo, sx:scaleFactor, sy:scaleFactor, parent:container,pixelSize:65});
   });
 
 function fancy(o) {
